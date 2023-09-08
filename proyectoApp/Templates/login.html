@@ -1,0 +1,21 @@
+{% extends "Padre.html" %}
+
+{% load static %}
+
+{% block encabezado %} login  {% endblock %}
+
+{% block mensaje %} <p>{{ mensaje }}</p> {% endblock %}
+
+{% block cambiable %}
+<form action="{% url 'login' %}" method="POST"> {% csrf_token %}
+
+    <table>
+
+        {{ form.as_table }}
+    
+    </table>
+
+    <input class="btn btn-info" type="submit" value="INGRESAR">
+
+</form>
+{% endblock %}

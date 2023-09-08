@@ -1,0 +1,24 @@
+{% extends "Padre.html" %}
+
+{% load static %}
+
+{% block encabezado %} NOTICIAS  {% endblock %}
+{% block mensaje %}<h3>{{ mensaje }}</h3> {% endblock %}
+
+{% block cambiable %}
+
+{% for noticias in object_list %}
+
+    
+    <h2>{{ noticias }}</h2>
+    <a class="btn btn-info" href="#">Ver</a>
+
+   
+
+
+
+{% endfor %}
+
+
+
+{% endblock %}
