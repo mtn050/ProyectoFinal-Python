@@ -7,15 +7,12 @@
 
 {% block cambiable %}
 
-{% for noticias in object_list %}
+{% for noticia in noticias %}
 
     
-    <h2>{{ noticias }}</h2>
-    <a class="btn btn-info" href="#">Ver</a>
-
-   
-
-
+    <h2>{{ noticia.Titulo }}</h2>
+    <h3>{{ noticia.Subtitulo }}</h3>
+    <p>{{ noticia.Cuerpo }}</p>
 
 {% endfor %}
 

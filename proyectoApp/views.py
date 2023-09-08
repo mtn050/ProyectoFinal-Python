@@ -1,5 +1,6 @@
+from typing import Any
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpRequest, HttpResponse
 from .forms import Registro, Edicion, Opiniones_form, Noticias_form
 from .models import Noticias
 from django.contrib.auth.forms import   AuthenticationForm
@@ -98,8 +99,12 @@ def borrar_opiniones(request):
 
    
 class noticias(ListView):
-    model= Noticias
-    template_name= "noticias.html"
+    def get(self,request):
+        model= Noticias
+        noticias=Noticias.objects.all()
+        template_name= "noticias.html"
+        return render(request, template_name, {"noticias": noticias})
+    
 
         
 def crear_noticias(request):
@@ -122,3 +127,28 @@ def crear_noticias(request):
 
 def borrar_noticias(request):
     return render ( request, 'inicio.html')
+
+def borrar_noticias(request):
+    return render ( request, 'inicio.html')
+
+
+
+#def editarPerfil(request):
+    usuario=request.user
+
+    if request.method=="POST":
+        form=UserEditForm(request.POST)
+        if form.is_valid():
+            info=form.cleaned_data
+            usuario.email=info["email"]
+            usuario.password1=info["password1"]
+            usuario.password2=info["password2"]
+            usuario.first_name=info["first_name"]
+            usuario.last_name=info["last_name"]
+            usuario.save()
+            return render(request, "AppCoder/inicio.html", {"mensaje":f"Usuario {usuario.username} editado correctamente"})
+        else:
+            return render(request, "AppCoder/editarPerfil.html", {"form": form, "nombreusuario":usuario.username, "mensaje":"Datos invalidos"})
+    else:
+        form=UserEditForm(instance=usuario)
+        return render(request, "AppCoder/editarPerfil.html", {"form": form, "nombreusuario":usuario.username})
