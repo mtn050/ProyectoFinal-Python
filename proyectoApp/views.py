@@ -104,6 +104,9 @@ class noticias(ListView):
         template_name= "noticias.html"
         return render(request, template_name, {"noticias": noticias})
     
+def leer(request):
+    return render (request, 'leer.html')    
+    
 
         
 def crear_noticias(request):

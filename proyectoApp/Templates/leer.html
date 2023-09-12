@@ -2,25 +2,15 @@
 
 {% load static %}
 
-{% block encabezado %} NOTICIAS  {% endblock %}
+{% block encabezado %} INICIO  {% endblock %}
 {% block mensaje %}<h3>{{ mensaje }}</h3> {% endblock %}
 
 {% block cambiable %}
 
-{% for noticia in noticias %}
-
-    <h1>{{ noticia.Titulo }}</h1>
-    <h3>{{ noticia.Subtitulo }}</h3>
-    
-    <a class="btn btn-primary" href="{%url 'leer' %}">LEER</a>
-{% endfor %}
-
-
-
 {% endblock %}
 
 {% block btn-noticias %} 
-    btn btn-success
+    btn btn-primary
 {% endblock %}
 
 {% block btn-Cnoticias %} 
@@ -35,8 +25,6 @@
     btn btn-primary 
 {% endblock %}
 
-
 {% block btn-Edicion %} 
     btn btn-primary
 {% endblock %}
-
