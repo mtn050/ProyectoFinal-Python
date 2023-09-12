@@ -2,23 +2,27 @@
 
 {% load static %}
 
-{% block encabezado %} login  {% endblock %}
+{% block titulo %}EDITAR PERFIL DE {{ nombreusuario }} {% endblock %}
 
-{% block mensaje %} <p>{{ mensaje }}</p> {% endblock %}
+{% block contenido_que_cambia %}
+<h3>{{ mensaje }}</h3>
 
-{% block cambiable %}
-<form action="{% url 'login' %}" method="POST"> {% csrf_token %}
+<form action="{% url 'editarPerfil' %}" method="POST"> {% csrf_token %}
 
     <table>
-
+    
         {{ form.as_table }}
     
     </table>
-
-    <input class="btn btn-info" type="submit" value="INGRESAR">
-
+    
+    <input type="submit" value="Guardar">
+    
+    
 </form>
+
+
 {% endblock %}
+
 
 
 {% block btn-noticias %} 
@@ -30,7 +34,7 @@
 {% endblock %}
 
 {% block btn-login %} 
-    btn btn-success
+    btn btn-primary
 {% endblock %}
 
 {% block btn-register %} 
@@ -38,5 +42,6 @@
 {% endblock %}
 
 {% block btn-Edicion %} 
-    btn btn-primary
+    btn btn-success 
 {% endblock %}
+

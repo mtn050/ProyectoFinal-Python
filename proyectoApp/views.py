@@ -53,7 +53,7 @@ def register(request):
 @login_required
 def editarPerfil(request):
     usuario=request.user
-
+    
     if request.method=="POST":
         form=Edicion(request.POST)
         if form.is_valid():
@@ -64,17 +64,17 @@ def editarPerfil(request):
             usuario.first_name=info["first_name"]
             usuario.last_name=info["last_name"]
             usuario.save()
-            return render(request, "AppCoder/inicio.html", {"mensaje":f"Usuario {usuario.username} editado correctamente"})
+            return render(request, "inicio.html", {"mensaje":f"Usuario {usuario.username} editado correctamente"})
         else:
-            return render(request, "AppCoder/editarPerfil.html", {"form": form, "nombreusuario":usuario.username, "mensaje":"Datos invalidos"})
+            return render(request, "editarPerfil.html", {"form": form, "nombreusuario":usuario.username, "mensaje":"Datos invalidos"})
     else:
         form=Edicion(instance=usuario)
-        return render(request, "AppCoder/editarPerfil.html", {"form": form, "nombreusuario":usuario.username})
+        return render(request, "editarPerfil.html", {"form": form, "nombreusuario":usuario.username})
 
 def buscar(request):
     return render ( request, 'inicio.html')
 
-def opiniones(request):
+def comentarios(request):
      #usuario=request.user
    
     if request.method=="POST":
@@ -89,10 +89,10 @@ def opiniones(request):
         formulario=Opiniones_form()
         return render(request,"opinion.html")
    
-def crear_opiniones(request):
+def crear_comentarios(request):
     return render ( request, 'inicio.html')
 
-def borrar_opiniones(request):
+def borrar_comentarios(request):
     return render ( request, 'inicio.html')
 
 
@@ -100,7 +100,6 @@ def borrar_opiniones(request):
    
 class noticias(ListView):
     def get(self,request):
-        model= Noticias
         noticias=Noticias.objects.all()
         template_name= "noticias.html"
         return render(request, template_name, {"noticias": noticias})
@@ -130,25 +129,3 @@ def borrar_noticias(request):
 
 def borrar_noticias(request):
     return render ( request, 'inicio.html')
-
-
-
-#def editarPerfil(request):
-    usuario=request.user
-
-    if request.method=="POST":
-        form=UserEditForm(request.POST)
-        if form.is_valid():
-            info=form.cleaned_data
-            usuario.email=info["email"]
-            usuario.password1=info["password1"]
-            usuario.password2=info["password2"]
-            usuario.first_name=info["first_name"]
-            usuario.last_name=info["last_name"]
-            usuario.save()
-            return render(request, "AppCoder/inicio.html", {"mensaje":f"Usuario {usuario.username} editado correctamente"})
-        else:
-            return render(request, "AppCoder/editarPerfil.html", {"form": form, "nombreusuario":usuario.username, "mensaje":"Datos invalidos"})
-    else:
-        form=UserEditForm(instance=usuario)
-        return render(request, "AppCoder/editarPerfil.html", {"form": form, "nombreusuario":usuario.username})
