@@ -14,7 +14,7 @@ urlpatterns = [
     #url noticias:
     path('noticias/', noticias.as_view(), name='noticias'),
     path('crearNoticias/', crear_noticias, name='crear_noticias'),
-    path('leer_noticia/', leer, name='leer'),
+    path('leer_noticia/<id>', leer, name='leer'),
     
 
     #url comentarios:

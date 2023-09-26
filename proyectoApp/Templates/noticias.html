@@ -8,11 +8,17 @@
 {% block cambiable %}
 
 {% for noticia in noticias %}
+    <br>
+    <br>
 
     <h1>{{ noticia.Titulo }}</h1>
     <h3>{{ noticia.Subtitulo }}</h3>
+    <br>
+    <a class="btn btn-primary" href="{% url 'leer' noticia.id %}"> LEER </a>
+
+    <br>
+    <br>
     
-    <a class="btn btn-primary" href="{%url 'leer' %}">LEER</a>
 {% endfor %}
 
 

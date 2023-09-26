@@ -104,8 +104,9 @@ class noticias(ListView):
         template_name= "noticias.html"
         return render(request, template_name, {"noticias": noticias})
     
-def leer(request):
-    return render (request, 'leer.html')    
+def leer(request, id):
+    noticia=Noticias.objects.get(id=id)
+    return render (request, 'leer.html', {"noticia": noticia})    
     
 
         
