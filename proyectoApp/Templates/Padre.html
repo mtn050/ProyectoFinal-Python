@@ -19,7 +19,7 @@
     </head>
     <body>
         <!-- Navigation-->
-        <nav class="navbar navbar-light bg-light static-top">
+        <nav class="navbar navbar-light bg-light static-top border-bottom border-primary">
             <div class="container">
                 <a class="navbar-brand" href="{%url 'inicio' %}">Home</a>
                 <a class= "{% block btn-noticias %} {% endblock %}" href="{%url 'noticias' %}">NOTICIAS</a>
@@ -41,13 +41,12 @@
         </nav>
 
         <!-- Masthead-->
-        <header class="masthead">
+        <header >
             <div class="container position-relative">
                 <div class="row justify-content-center">
                     <div class="col-xl-6">
-                        <div class="text-center text-white">
+                        <div class="text-center text-black">
                             <!-- Page heading-->
-                            <h1 class="mb-5"></h1>
                             {% block cambiable %} {% endblock %}
                         </div>
                     </div>

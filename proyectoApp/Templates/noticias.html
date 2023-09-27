@@ -8,16 +8,16 @@
 {% block cambiable %}
 
 {% for noticia in noticias %}
-    <br>
-    <br>
+ 
+    <div class="card mb-3">
+        <img src="https://d17mh4r1hk5d5c.cloudfront.net/article/plqt6kb0s4_coldplay.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ noticia.Titulo }}</h5>
+          <p class="card-text">{{ noticia.Titulo }}</p>
+          <a class="btn btn-primary" href="{% url 'leer' noticia.id %}"> LEER </a>  
+        </div>
+      </div>
 
-    <h1>{{ noticia.Titulo }}</h1>
-    <h3>{{ noticia.Subtitulo }}</h3>
-    <br>
-    <a class="btn btn-primary" href="{% url 'leer' noticia.id %}"> LEER </a>
-
-    <br>
-    <br>
     
 {% endfor %}
 
